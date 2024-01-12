@@ -59,16 +59,6 @@ const Terminal = () => {
     term.writeln('Type "help" for a list of commands');
     term.prompt();
 
-    term.attachCustomKeyEventHandler((arg) => {
-      if (arg.ctrlKey && arg.code === "KeyV" && arg.type === "keydown") {
-          navigator.clipboard.readText()
-            .then(text => {
-              term.write(text);
-            })
-      };
-      return true;
-    });
-
     term.onKey(({key, domEvent}) => {
       const ev = domEvent;
       const printable = !ev.altKey && !ev.ctrlKey && !ev.metaKey;
